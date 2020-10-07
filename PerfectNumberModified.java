@@ -15,14 +15,17 @@ public class PerfectNumberModified {
         return numbers;
     }
 
-    public static void detect(int n)
-    {
-        Set<Integer> divisors = PerfectNumberModified.divisors(n);
+    public static String process(int n) {
+        Set<Integer> divisors = PerfectNumber.divisors(n);
 
         int number = divisors.stream().filter(i -> n != i).mapToInt(Integer::intValue).sum();
-        String status = number == n ? "perfect number" : (number > n ? "abundant number" : "deficient number");
 
-        System.out.println(n + ": " + status);
+        return number == n ? "perfect number" : (number > n ? "abundant number" : "deficient number");
+    }
+
+    public static void detect(int n)
+    {
+        System.out.println(n + ": " + PerfectNumber.process(n));
     }
 
     public static void main(String[] args) {
